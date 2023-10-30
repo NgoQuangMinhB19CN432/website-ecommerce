@@ -82,4 +82,8 @@ public class Product {
     public void setProductActualPrice(Double productActualPrice) {
         this.productActualPrice = productActualPrice;
     }
+
+    public void setProductImages(Set<ImageModel> images) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
