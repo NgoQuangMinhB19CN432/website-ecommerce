@@ -5,6 +5,7 @@ import com.ecommerce.backend.entity.OrderDetail;
 import com.ecommerce.backend.entity.OrderInput;
 import com.ecommerce.backend.entity.TransactionDetails;
 import com.ecommerce.backend.service.OrderDetailService;
+import com.razorpay.RazorpayException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +45,7 @@ public class OrderDetailController {
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/createTransaction/{amount}"})
-    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) {
+    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) throws RazorpayException {
         return (TransactionDetails) orderDetailService.createTransaction(amount);
     }
 }
