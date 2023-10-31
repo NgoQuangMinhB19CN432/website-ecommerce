@@ -43,7 +43,7 @@ public class WebSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.cors(Customizer.withDefaults()); // Bật cấu hình CORS
+        httpSecurity.cors(Customizer.withDefaults()); 
         httpSecurity
         .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authorizeRequests ->
