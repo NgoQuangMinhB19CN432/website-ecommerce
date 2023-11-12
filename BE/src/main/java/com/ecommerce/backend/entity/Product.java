@@ -11,8 +11,16 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
@@ -32,58 +40,5 @@ public class Product {
                     @JoinColumn(name = "image_id")
             }
     )
-//    private Set<ImageModel> productImages;
-//
-//    public Set<ImageModel> getProductImages() {
-//        return productImages;
-//    }
-//
-//    public void setProductImages(Set<ImageModel> productImages) {
-//        this.productImages = productImages;
-//    }
-
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public Double getProductDiscountedPrice() {
-        return productDiscountedPrice;
-    }
-
-    public void setProductDiscountedPrice(Double productDiscountedPrice) {
-        this.productDiscountedPrice = productDiscountedPrice;
-    }
-
-    public Double getProductActualPrice() {
-        return productActualPrice;
-    }
-
-    public void setProductActualPrice(Double productActualPrice) {
-        this.productActualPrice = productActualPrice;
-    }
-
-    public void setProductImages(Set<ImageModel> images) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    private Set<ImageModel> productImages;
 }

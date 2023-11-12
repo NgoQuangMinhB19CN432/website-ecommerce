@@ -1,7 +1,14 @@
 package com.ecommerce.backend.entity;
 
 import java.util.List;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderInput {
 
     private String fullName;
@@ -10,52 +17,4 @@ public class OrderInput {
     private String alternateContactNumber;
     private String transactionId;
     private List<OrderProductQuantity> orderProductQuantityList;
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getFullAddress() {
-        return fullAddress;
-    }
-
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
-    }
-
-    public String getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getAlternateContactNumber() {
-        return alternateContactNumber;
-    }
-
-    public void setAlternateContactNumber(String alternateContactNumber) {
-        this.alternateContactNumber = alternateContactNumber;
-    }
-
-    public List<OrderProductQuantity> getOrderProductQuantityList() {
-        return orderProductQuantityList;
-    }
-
-    public void setOrderProductQuantityList(List<OrderProductQuantity> orderProductQuantityList) {
-        this.orderProductQuantityList = orderProductQuantityList;
-    }
 }
