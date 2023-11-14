@@ -1,6 +1,5 @@
 package com.ecommerce.backend.service;
 
-
 import com.ecommerce.backend.dao.UserDao;
 import com.ecommerce.backend.entity.JwtRequest;
 import com.ecommerce.backend.entity.JwtResponse;
@@ -39,7 +38,7 @@ public class JwtService implements UserDetailsService {
 
         UserDetails userDetails = loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
-
+        
         User user = userDao.findById(userName).get();
         return new JwtResponse(user, newGeneratedToken);
     }
