@@ -19,6 +19,11 @@
 	</properties>
 	<dependencies>
                 <dependency>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                        <version>2.3.1</version> <!-- Hoặc phiên bản tương thích hơn -->
+                </dependency>
+                <dependency>
                         <groupId>com.razorpay</groupId>
                         <artifactId>razorpay-java</artifactId>
                         <version>1.4.3</version>
