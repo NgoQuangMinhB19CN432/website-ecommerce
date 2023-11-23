@@ -29,6 +29,11 @@ public class UserService {
         adminRole.setRoleDescription("Admin role");
         roleDao.save(adminRole);
         
+        Role userRole = new Role();
+        userRole.setRoleName("User");
+        userRole.setRoleDescription("Default role for newly created record");
+        roleDao.save(userRole);
+        
          User adminUser = new User();
         adminUser.setUserName("admin123");
         adminUser.setUserPassword(getEncodedPassword("admin@pass"));
@@ -38,6 +43,16 @@ public class UserService {
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
         userDao.save(adminUser);
+        
+        User user = new User();
+        user.setUserName("alune");
+        user.setUserPassword(getEncodedPassword("minh2001"));
+        user.setUserFirstName("minh");
+        user.setUserLastName("ngo");
+        Set<Role> userRoles = new HashSet<>();
+        userRoles.add(userRole);
+        user.setRole(userRoles);
+        userDao.save(user);
     }
 
     public User registerNewUser(User user) {
