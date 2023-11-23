@@ -23,6 +23,22 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    public void initRoleAndUser() {
+        Role adminRole = new Role();
+        adminRole.setRoleName("Admin");
+        adminRole.setRoleDescription("Admin role");
+        roleDao.save(adminRole);
+        
+         User adminUser = new User();
+        adminUser.setUserName("admin123");
+        adminUser.setUserPassword(getEncodedPassword("admin@pass"));
+        adminUser.setUserFirstName("admin");
+        adminUser.setUserLastName("admin");
+        Set<Role> adminRoles = new HashSet<>();
+        adminRoles.add(adminRole);
+        adminUser.setRole(adminRoles);
+        userDao.save(adminUser);
+    }
 
     public User registerNewUser(User user) {
         Role role = roleDao.findById("User").get();
