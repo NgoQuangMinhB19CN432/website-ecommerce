@@ -18,18 +18,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Cart {
+public class Cart432 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer cartId;
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product432 product;
     @ManyToOne
     @JoinColumn(name = "user_name")
-    private User user;
-    public Cart(Product product, User user) {
+    private User432 user;
+    public Cart432(Product432 product, User432 user) {
         this.product = product;
         this.user = user;
     }

@@ -9,12 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderInput {
+public class OrderInput432 {
 
     private String fullName;
     private String fullAddress;
     private String contactNumber;
     private String alternateContactNumber;
     private String transactionId;
-    private List<OrderProductQuantity> orderProductQuantityList;
+    private List<OrderProductQuantity432> orderProductQuantityList;
 }

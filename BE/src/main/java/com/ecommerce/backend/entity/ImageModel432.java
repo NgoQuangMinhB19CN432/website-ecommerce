@@ -14,12 +14,12 @@ import lombok.Setter;
 
 
 @Entity
-@Table(name = "image_model")
+@Table(name = "image_model432")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImageModel {
+public class ImageModel432 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,7 +29,7 @@ public class ImageModel {
     @Column(length = 50000000)
     private byte[] picByte;
 
-    public ImageModel(String name, String type, byte[] picByte) {
+    public ImageModel432(String name, String type, byte[] picByte) {
         this.name = name;
         this.type = type;
         this.picByte = picByte;

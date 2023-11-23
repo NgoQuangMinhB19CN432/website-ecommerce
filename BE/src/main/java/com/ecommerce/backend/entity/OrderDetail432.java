@@ -15,7 +15,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDetail {
+public class OrderDetail432 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,11 +27,11 @@ public class OrderDetail {
     private String orderStatus;
     private Double orderAmount;
     @OneToOne
-    private Product product;
+    private Product432 product;
     @OneToOne
-    private User user;
+    private User432 user;
     private String transactionId;
-    public OrderDetail(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String orderStatus, Double orderAmount, Product product, User user, String transactionId) {
+    public OrderDetail432(String orderFullName, String orderFullOrder, String orderContactNumber, String orderAlternateContactNumber, String orderStatus, Double orderAmount, Product432 product, User432 user, String transactionId) {
         this.orderFullName = orderFullName;
         this.orderFullOrder = orderFullOrder;
         this.orderContactNumber = orderContactNumber;

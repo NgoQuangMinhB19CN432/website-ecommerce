@@ -1,9 +1,11 @@
 package com.ecommerce.backend.entity;
 
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -19,21 +21,24 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Product432 {
 
     @Id
-    private String userName;
-    private String userFirstName;
-    private String userLastName;
-    private String userPassword;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer productId;
+    private String productName;
+    @Column(length = 2000)
+    private String productDescription;
+    private Double productDiscountedPrice;
+    private Double productActualPrice;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLE",
+    @JoinTable(name = "product_images",
             joinColumns = {
-                    @JoinColumn(name = "USER_ID")
+                    @JoinColumn(name = "product_id")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
+                    @JoinColumn(name = "image_id")
             }
     )
-    private Set<Role> role;
+    private Set<ImageModel432> productImages;
 }

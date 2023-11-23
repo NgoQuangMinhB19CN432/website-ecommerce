@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TransactionDetails {
+public class TransactionDetails432 {
 
     private String orderId;
     private String currency;

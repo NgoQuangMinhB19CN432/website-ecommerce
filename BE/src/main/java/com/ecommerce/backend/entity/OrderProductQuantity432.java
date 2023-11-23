@@ -1,22 +1,16 @@
 package com.ecommerce.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
+public class OrderProductQuantity432 {
 
-    @Id
-    private String roleName;
-    private String roleDescription;
+    private Integer productId;
+    private Integer quantity;
 }
