@@ -6,13 +6,13 @@ import com.ecommerce.backend.dao.CartDao;
 import com.ecommerce.backend.dao.OrderDetailDao;
 import com.ecommerce.backend.dao.ProductDao;
 import com.ecommerce.backend.dao.UserDao;
-import com.ecommerce.backend.entity.Cart;
-import com.ecommerce.backend.entity.OrderDetail;
-import com.ecommerce.backend.entity.OrderInput;
-import com.ecommerce.backend.entity.OrderProductQuantity;
-import com.ecommerce.backend.entity.Product;
-import com.ecommerce.backend.entity.TransactionDetails;
-import com.ecommerce.backend.entity.User;
+import com.ecommerce.backend.entity.Cart432;
+import com.ecommerce.backend.entity.OrderDetail432;
+import com.ecommerce.backend.entity.OrderInput432;
+import com.ecommerce.backend.entity.OrderProductQuantity432;
+import com.ecommerce.backend.entity.Product432;
+import com.ecommerce.backend.entity.TransactionDetails432;
+import com.ecommerce.backend.entity.User432;
 import com.razorpay.Order;
 import com.razorpay.RazorpayClient;
 import com.razorpay.RazorpayException;
@@ -45,8 +45,8 @@ public class OrderDetailService {
     @Autowired
     private CartDao cartDao;
 
-    public List<OrderDetail> getAllOrderDetails(String status) {
-        List<OrderDetail> orderDetails = new ArrayList<>();
+    public List<OrderDetail432> getAllOrderDetails(String status) {
+        List<OrderDetail432> orderDetails = new ArrayList<>();
 
         if(status.equals("All")) {
             orderDetailDao.findAll().forEach(
@@ -62,23 +62,23 @@ public class OrderDetailService {
          return orderDetails;
     }
 
-    public List<OrderDetail> getOrderDetails() {
+    public List<OrderDetail432> getOrderDetails() {
         String currentUser = JwtRequestFilter.CURRENT_USER;
-        User user = userDao.findById(currentUser).get();
+        User432 user = userDao.findById(currentUser).get();
 
         return orderDetailDao.findByUser(user);
     }
 
-    public void placeOrder(OrderInput orderInput, boolean isSingleProductCheckout) {
-        List<OrderProductQuantity> productQuantityList = orderInput.getOrderProductQuantityList();
+    public void placeOrder(OrderInput432 orderInput, boolean isSingleProductCheckout) {
+        List<OrderProductQuantity432> productQuantityList = orderInput.getOrderProductQuantityList();
 
-        for (OrderProductQuantity o: productQuantityList) {
-            Product product = productDao.findById(o.getProductId()).get();
+        for (OrderProductQuantity432 o: productQuantityList) {
+            Product432 product = productDao.findById(o.getProductId()).get();
 
             String currentUser = JwtRequestFilter.CURRENT_USER;
-            User user = userDao.findById(currentUser).get();
+            User432 user = userDao.findById(currentUser).get();
 
-            OrderDetail orderDetail = new OrderDetail(
+            OrderDetail432 orderDetail = new OrderDetail432(
                   orderInput.getFullName(),
                   orderInput.getFullAddress(),
                   orderInput.getContactNumber(),
@@ -92,7 +92,7 @@ public class OrderDetailService {
 
             // empty the cart.
             if(!isSingleProductCheckout) {
-                List<Cart> carts = cartDao.findByUser(user);
+                List<Cart432> carts = cartDao.findByUser(user);
                 carts.stream().forEach(x -> cartDao.deleteById(x.getCartId()));
             }
 
@@ -101,7 +101,7 @@ public class OrderDetailService {
     }
 
     public void markOrderAsDelivered(Integer orderId) {
-        OrderDetail orderDetail = orderDetailDao.findById(orderId).get();
+        OrderDetail432 orderDetail = orderDetailDao.findById(orderId).get();
 
         if(orderDetail != null) {
             orderDetail.setOrderStatus("Delivered");
@@ -110,7 +110,7 @@ public class OrderDetailService {
 
     }
 
-    public TransactionDetails createTransaction(Double amount) throws RazorpayException {
+    public TransactionDetails432 createTransaction(Double amount) throws RazorpayException {
         try {
 
             JSONObject jsonObject = new JSONObject();
@@ -121,7 +121,7 @@ public class OrderDetailService {
 
             Order order = razorpayClient.orders.create(jsonObject);
 
-            TransactionDetails transactionDetails =  prepareTransactionDetails(order);
+            TransactionDetails432 transactionDetails =  prepareTransactionDetails(order);
             return transactionDetails;
         } catch (JSONException e) {
             System.out.println(e.getMessage());
@@ -129,12 +129,12 @@ public class OrderDetailService {
         return null;
     }
 
-    private TransactionDetails prepareTransactionDetails(Order order) {
+    private TransactionDetails432 prepareTransactionDetails(Order order) {
         String orderId = order.get("id");
         String currency = order.get("currency");
         Integer amount = order.get("amount");
 
-        TransactionDetails transactionDetails = new TransactionDetails(orderId, currency, amount, KEY);
+        TransactionDetails432 transactionDetails = new TransactionDetails432(orderId, currency, amount, KEY);
         return transactionDetails;
     }
 }

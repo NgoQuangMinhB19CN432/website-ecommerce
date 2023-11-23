@@ -27,34 +27,34 @@ public class CartService {
         cartDao.deleteById(cartId);
     }
 
-    public Cart addToCart(Integer productId) {
-        Product product = productDao.findById(productId).get();
+    public Cart432 addToCart(Integer productId) {
+        Product432 product = productDao.findById(productId).get();
 
         String username = JwtRequestFilter.CURRENT_USER;
 
-        User user = null;
+        User432 user = null;
         if(username != null) {
             user = userDao.findById(username).get();
         }
 
-        List<Cart> cartList = cartDao.findByUser(user);
-        List<Cart> filteredList = cartList.stream().filter(x -> Objects.equals(x.getProduct().getProductId(), productId)).collect(Collectors.toList());
+        List<Cart432> cartList = cartDao.findByUser(user);
+        List<Cart432> filteredList = cartList.stream().filter(x -> Objects.equals(x.getProduct().getProductId(), productId)).collect(Collectors.toList());
 
         if(!filteredList.isEmpty()) {
             return null;
         }
 
         if(product != null && user != null) {
-            Cart cart = new Cart(product, user);
+            Cart432 cart = new Cart432(product, user);
             return cartDao.save(cart);
         }
 
         return null;
     }
 
-    public List<Cart> getCartDetails() {
+    public List<Cart432> getCartDetails() {
         String username = JwtRequestFilter.CURRENT_USER;
-        User user = userDao.findById(username).get();
+        User432 user = userDao.findById(username).get();
         return cartDao.findByUser(user);
     }
 }

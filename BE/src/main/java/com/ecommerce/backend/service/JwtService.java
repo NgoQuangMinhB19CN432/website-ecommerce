@@ -3,7 +3,7 @@ package com.ecommerce.backend.service;
 import com.ecommerce.backend.dao.UserDao;
 import com.ecommerce.backend.entity.JwtRequest;
 import com.ecommerce.backend.entity.JwtResponse;
-import com.ecommerce.backend.entity.User;
+import com.ecommerce.backend.entity.User432;
 import com.ecommerce.backend.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,13 +39,13 @@ public class JwtService implements UserDetailsService {
         UserDetails userDetails = loadUserByUsername(userName);
         String newGeneratedToken = jwtUtil.generateToken(userDetails);
         
-        User user = userDao.findById(userName).get();
+        User432 user = userDao.findById(userName).get();
         return new JwtResponse(user, newGeneratedToken);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findById(username).get();
+        User432 user = userDao.findById(username).get();
 
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(
@@ -58,7 +58,7 @@ public class JwtService implements UserDetailsService {
         }
     }
 
-    private Set getAuthority(User user) {
+    private Set getAuthority(User432 user) {
         Set<SimpleGrantedAuthority> authorities = new HashSet<>();
         user.getRole().forEach(role -> {
             authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));

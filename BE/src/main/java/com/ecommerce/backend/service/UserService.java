@@ -3,8 +3,8 @@ package com.ecommerce.backend.service;
 
 import com.ecommerce.backend.dao.RoleDao;
 import com.ecommerce.backend.dao.UserDao;
-import com.ecommerce.backend.entity.Role;
-import com.ecommerce.backend.entity.User;
+import com.ecommerce.backend.entity.Role432;
+import com.ecommerce.backend.entity.User432;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,40 +24,40 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
     public void initRoleAndUser() {
-        Role adminRole = new Role();
+        Role432 adminRole = new Role432();
         adminRole.setRoleName("Admin");
         adminRole.setRoleDescription("Admin role");
         roleDao.save(adminRole);
         
-        Role userRole = new Role();
+        Role432 userRole = new Role432();
         userRole.setRoleName("User");
         userRole.setRoleDescription("Default role for newly created record");
         roleDao.save(userRole);
         
-         User adminUser = new User();
+         User432 adminUser = new User432();
         adminUser.setUserName("admin123");
         adminUser.setUserPassword(getEncodedPassword("admin@pass"));
         adminUser.setUserFirstName("admin");
         adminUser.setUserLastName("admin");
-        Set<Role> adminRoles = new HashSet<>();
+        Set<Role432> adminRoles = new HashSet<>();
         adminRoles.add(adminRole);
         adminUser.setRole(adminRoles);
         userDao.save(adminUser);
         
-        User user = new User();
+        User432 user = new User432();
         user.setUserName("alune");
         user.setUserPassword(getEncodedPassword("minh2001"));
         user.setUserFirstName("minh");
         user.setUserLastName("ngo");
-        Set<Role> userRoles = new HashSet<>();
+        Set<Role432> userRoles = new HashSet<>();
         userRoles.add(userRole);
         user.setRole(userRoles);
         userDao.save(user);
     }
 
-    public User registerNewUser(User user) {
-        Role role = roleDao.findById("User").get();
-        Set<Role> userRoles = new HashSet<>();
+    public User432 registerNewUser(User432 user) {
+        Role432 role = roleDao.findById("User").get();
+        Set<Role432> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
         user.setUserPassword(getEncodedPassword(user.getUserPassword()));
