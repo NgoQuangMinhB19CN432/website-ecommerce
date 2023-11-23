@@ -1,7 +1,7 @@
 package com.ecommerce.backend.controller;
 
 
-import com.ecommerce.backend.entity.User;
+import com.ecommerce.backend.entity.User432;
 import com.ecommerce.backend.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping({"/registerNewUser"})
-    public User registerNewUser(@RequestBody User user) {
+    public User432 registerNewUser(@RequestBody User432 user) {
         return userService.registerNewUser(user);
     }
 

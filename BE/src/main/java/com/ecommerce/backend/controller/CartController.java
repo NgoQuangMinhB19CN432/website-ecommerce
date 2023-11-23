@@ -1,7 +1,7 @@
 package com.ecommerce.backend.controller;
 
 
-import com.ecommerce.backend.entity.Cart;
+import com.ecommerce.backend.entity.Cart432;
 import com.ecommerce.backend.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,7 +22,7 @@ public class CartController {
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/addToCart/{productId}"})
-    public Cart addToCart(@PathVariable(name = "productId") Integer productId) {
+    public Cart432 addToCart(@PathVariable(name = "productId") Integer productId) {
         return cartService.addToCart(productId);
     }
 
@@ -34,7 +34,7 @@ public class CartController {
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/getCartDetails"})
-    public List<Cart> getCartDetails() {
+    public List<Cart432> getCartDetails() {
         return cartService.getCartDetails();
     }
 }

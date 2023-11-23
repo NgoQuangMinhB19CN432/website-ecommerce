@@ -1,9 +1,9 @@
 package com.ecommerce.backend.controller;
 
 
-import com.ecommerce.backend.entity.OrderDetail;
-import com.ecommerce.backend.entity.OrderInput;
-import com.ecommerce.backend.entity.TransactionDetails;
+import com.ecommerce.backend.entity.OrderDetail432;
+import com.ecommerce.backend.entity.OrderInput432;
+import com.ecommerce.backend.entity.TransactionDetails432;
 import com.ecommerce.backend.service.OrderDetailService;
 import com.razorpay.RazorpayException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +22,19 @@ public class OrderDetailController {
     @PreAuthorize("hasRole('User')")
     @PostMapping({"/placeOrder/{isSingleProductCheckout}"})
     public void placeOrder(@PathVariable(name = "isSingleProductCheckout") boolean isSingleProductCheckout,
-            @RequestBody OrderInput orderInput) {
+            @RequestBody OrderInput432 orderInput) {
         orderDetailService.placeOrder(orderInput, isSingleProductCheckout);
     }
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/getOrderDetails"})
-    public List<OrderDetail> getOrderDetails() {
+    public List<OrderDetail432> getOrderDetails() {
         return orderDetailService.getOrderDetails();
     }
 
     @PreAuthorize("hasRole('Admin')")
     @GetMapping({"/getAllOrderDetails/{status}"})
-    public List<OrderDetail> getAllOrderDetails(@PathVariable(name = "status") String status) {
+    public List<OrderDetail432> getAllOrderDetails(@PathVariable(name = "status") String status) {
         return orderDetailService.getAllOrderDetails(status);
     }
 
@@ -46,7 +46,7 @@ public class OrderDetailController {
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/createTransaction/{amount}"})
-    public TransactionDetails createTransaction(@PathVariable(name = "amount") Double amount) throws RazorpayException {
-        return (TransactionDetails) orderDetailService.createTransaction(amount);
+    public TransactionDetails432 createTransaction(@PathVariable(name = "amount") Double amount) throws RazorpayException {
+        return (TransactionDetails432) orderDetailService.createTransaction(amount);
     }
 }

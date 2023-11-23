@@ -1,7 +1,7 @@
 package com.ecommerce.backend.controller;
 
 
-import com.ecommerce.backend.entity.Role;
+import com.ecommerce.backend.entity.Role432;
 import com.ecommerce.backend.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +17,7 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping({"/createNewRole"})
-    public Role createNewRole(@RequestBody Role role) {
+    public Role432 createNewRole(@RequestBody Role432 role) {
         return roleService.createNewRole(role);
     }
 }
